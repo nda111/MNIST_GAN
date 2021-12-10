@@ -60,13 +60,14 @@ The model was trained for `20` epochs and optimized with `Adam` optimizer (learn
 
 ### Result
 Images below are the output at epochs `1`, `11` and `20` (the last).
-![Epoch01](images/train_epoch01.png)
-![Epoch11](images/train_epoch11.png)
-![Epoch20](images/train_epoch20.png)
+
+![Epoch01](images/train-epoch01.png)
+![Epoch11](images/train-epoch11.png)
+![Epoch20](images/train-epoch20.png)
 
 It seems it's getting more like hand-written digits. And the chart below is the loss function across all 20 epochs training.
-![Loss](images/result_loss.png)
 
+![Loss](images/result-loss.png)
 
 The discriminator loss of real images and fake images are simillar and as the discriminator loss decrease, the generator loss is synchronously increasing.
 
