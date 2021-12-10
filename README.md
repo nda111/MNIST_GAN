@@ -9,15 +9,18 @@
 ### GANs
 GAN is a concept of unsupervised generative neural network which's strategy is to have a separate discriminator that discriminates whether the input is real or fake: the one that generator made. 
 The picture below is simplified illustration of GANs strategy.
+
 ![GAN Concept](images/gan-concept.png)
 
 As far as GANs have two separate models which called the generator and the discriminator, the two models also should be trained separately.
 #### Train Discriminator
 First, you have to train the discriminator. As you know, the discriminator tells us the input is a real one or a fake one. This is a binary classification problem. I trained the discriminator to return 1 if the input is real, 0 if the input is fake. I used binary cross entropy as a loss function (`BCELoss`).
+
 ![Train Discriminator](images/train-d.png)
 
 #### Train Generator
 Then you have to train the generator. Training the generator is easier than training the discriminator. You can simply generate some fake images, tell the discriminator this image is the real one and update weights with that loss. Then, the generator will reinforce its current behavior.
+
 ![Train Generator](images/train-g.png)
 
 ### Binary Cross Entropy Loss
@@ -43,10 +46,12 @@ All codes for this project is written in `Python` programming language and depen
 
 #### Generator
 The generator consists of one linear block, four convolution transpose blocks and `Tanh` activation at last. The linear block consists of `Linear` layer, `BatchNorm1d` layer and `LeakyReLU` activation layer and the convolution transpose block consists of `ConvTranspose2d` layer, `BatchNorm2d` layer and `LeakyReLU` activation layer. This model receives `n x 100` input and returns `n x 1 x 28 x 28` single-channel images.
+
 ![GeneratorModel](images/model-generator.png)
 
 #### Discriminator
 The discriminator consists of three convolution block, `linear` layer and `Sigmoid` activation layer. The convolution block consists of `Conv2d` layer, `BatchNorm2d` layer and `LeakyReLU` activation layer.
+
 ![DiscriminatorModel](images/model-discriminator.png)
 
 ## Experiment
@@ -62,9 +67,11 @@ Images below are the output at epochs `1`, `11` and `20` (the last).
 It seems it's getting more like hand-written digits. And the chart below is the loss function across all 20 epochs training.
 ![Loss](images/result_loss.png)
 
+
 The discriminator loss of real images and fake images are simillar and as the discriminator loss decrease, the generator loss is synchronously increasing.
 
 And here's the result of the model across the first epoch to the last epoch.
+
 ![Result](images/result.gif)
 
 ## Dependency
